@@ -35,7 +35,7 @@ public class AppTest
     public void testValid()
     {
         try {
-            DataPackage pkg = DataPackageReader.GetPackage(new URL("http://data.okfn.org/data/cpi/"));
+            DataPackage pkg = DataPackageReader.GetPackage(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
             pkg.description = "This is a description";
 
             //Gson gson = new Gson();
