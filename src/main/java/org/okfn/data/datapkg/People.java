@@ -6,6 +6,6 @@ public class People implements IValidItem {
     public String web = "";
 
     public boolean IsValid() {
-        return true;
+        return this.name != "";
     }    
 }
