@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * to create a new .json file, or from a DataPackageReader which will
  * load a remote datapackage ready for use.
  */
-public class DataPackage
+public class DataPackage implements IValidItem 
 {
     public String id = "";     
     public String name = "";
@@ -28,4 +28,7 @@ public class DataPackage
     public String version = "";
     public String download_url = "";
 
+    public boolean IsValid() {
+        return true;
+    }    
 }
