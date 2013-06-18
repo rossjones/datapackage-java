@@ -6,6 +6,6 @@ public class Source  implements IValidItem  {
     public String email = "";    
 
     public boolean IsValid() {
-        return true;
+        return name != "";
     }        
 }

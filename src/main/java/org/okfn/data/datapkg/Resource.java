@@ -8,6 +8,6 @@ public class Resource  implements IValidItem {
     public ArrayList<Schema> schema = new ArrayList<Schema>();
 
     public boolean IsValid() {
-        return true;
+        return path != "" && url != "";
     }    
 }

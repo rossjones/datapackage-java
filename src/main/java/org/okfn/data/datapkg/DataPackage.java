@@ -1,6 +1,7 @@
 package org.okfn.data.datapkg;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * DataPackage is a POJO that is filled in with data either directly
@@ -29,6 +30,16 @@ public class DataPackage implements IValidItem
     public String download_url = "";
 
     public boolean IsValid() {
+        // Iterate over the lists and check they claim to be valid. Don't do it like
+        // this, use a list of types to check....
+        for(Iterator<License> i = this.licenses.iterator(); i.hasNext(); ) {        
+            License license = i.next();
+            if ( ! license.IsValid() ) {
+                return false;
+            }
+        }
+
+
         return true;
     }    
 }

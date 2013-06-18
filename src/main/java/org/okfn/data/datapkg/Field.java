@@ -7,6 +7,6 @@ public class Field  implements IValidItem
     public String description = "";
 
     public boolean IsValid() {
-        return true;
+        return id != "" && type != "";
     }        
 }

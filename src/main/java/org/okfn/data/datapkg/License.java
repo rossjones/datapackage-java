@@ -6,6 +6,6 @@ public class License  implements IValidItem
     public String url = "";
 
     public boolean IsValid() {
-        return true;
+        return url != "";
     }        
 }
