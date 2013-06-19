@@ -4,9 +4,9 @@
   <groupId>org.okfn.data.datapkg</groupId>
   <artifactId>datapackage</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1</version>
   <name>datapackage</name>
-  <url>http://maven.apache.org</url>
+  <url>http://data.okfn.org/standards/data-package</url>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -20,5 +20,10 @@
       <version>2.2.4</version>
       <scope>compile</scope>
     </dependency>    
+    <dependency>
+      <groupId>org.apache.solr</groupId>
+      <artifactId>solr-commons-csv</artifactId>
+      <version>1.4.0</version>
+    </dependency>
   </dependencies>
 </project>

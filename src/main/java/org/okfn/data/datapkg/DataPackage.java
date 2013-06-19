@@ -1,5 +1,7 @@
 package org.okfn.data.datapkg;
 
+import org.apache.commons.csv.CSVParser;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,6 +42,7 @@ public class DataPackage implements IValidItem
             }
         }
 
+        // Add more validation ...
 
         return true;
     }    
