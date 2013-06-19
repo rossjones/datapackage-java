@@ -16,4 +16,14 @@ public class Schema  implements IValidItem  {
         }
         return true;
     }        
+
+    public String toString()  {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(" Schema = \n");        
+        buffer.append("  Fields = \n");
+        for(Iterator<Field> i = this.fields.iterator(); i.hasNext(); ) {
+            buffer.append( i.next().toString() + "\n");
+        }
+        return buffer.toString();
+    }
 }

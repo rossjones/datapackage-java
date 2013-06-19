@@ -36,11 +36,8 @@ public class AppTest
     {
         try {
             DataPackage pkg = DataPackageReader.GetPackage(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
-            pkg.description = "This is a description";
+            System.out.println(pkg.toString());            
 
-            //Gson gson = new Gson();
-            //String json = gson.toJson(pkg);              
-            //System.out.println(json);
         } catch ( MalformedURLException e ) {
             System.out.println(e.toString());
         }

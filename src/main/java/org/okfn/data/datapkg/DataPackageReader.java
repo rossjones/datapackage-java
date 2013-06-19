@@ -17,6 +17,7 @@ import com.google.gson.Gson;
  */
 public class DataPackageReader
 {
+    public static Gson gson = new Gson();
 
     public static String ReadFromUrl(URL source) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -35,12 +36,13 @@ public class DataPackageReader
 
     public static DataPackage GetPackage(URL source) {
         DataPackage pkg = new DataPackage();
+        String data = null;
         try {
-            String data = ReadFromUrl(source);
-            //Gson gson = new Gson();
-            //pkg = gson.fromJson(data, DataPackage.class);           
-        } catch (IOException e) {
+            data = ReadFromUrl(source);
 
+            pkg = gson.fromJson(data, DataPackage.class);           
+        } catch (IOException e) {
+            System.out.println(data);
         }
         return pkg;
     }

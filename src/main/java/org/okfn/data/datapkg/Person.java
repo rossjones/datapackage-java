@@ -1,13 +1,13 @@
 package org.okfn.data.datapkg;
 
-public class Source  implements IValidItem  {
+public class Person implements IValidItem {
     public String name = "";
-    public String web = "";
     public String email = "";    
+    public String web = "";
 
     public boolean IsValid() {
-        return name != "";
-    }        
+        return this.name != "";
+    }    
 
     public String toString()  {
         StringBuffer buffer = new StringBuffer();
