@@ -10,7 +10,7 @@ This is still incomplete, but should work in reading most datapackage.json files
 ```java
 try {
     DataPackageReader reader = new DataPackageReader();
-    DataPackage pkg = reader.GetPackage(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
+    DataPackage pkg = reader.Read(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
     System.out.println(pkg.description);            
 } catch ( MalformedURLException e ) {
     System.out.println(e.toString());

@@ -20,7 +20,7 @@ public class DataPackageReader
     public Gson gson = new Gson();
 
 
-    public DataPackage GetPackage(URL source) throws IOException {
+    public DataPackage Read(URL source) throws IOException {
         DataPackage pkg = new DataPackage();
         try {
             String data = ReadFromUrl(source);

@@ -34,11 +34,11 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    public void testValid()
+    public void testValidRead()
     {
         try {
             DataPackageReader reader = new DataPackageReader();
-            DataPackage pkg = reader.GetPackage(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
+            DataPackage pkg = reader.Read(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
             System.out.println(pkg.toString());            
 
         } catch ( MalformedURLException e ) {
@@ -47,4 +47,16 @@ public class AppTest
             System.out.println(ioe.toString());
         }        
     }
+
+    public void testValidWrite()
+    {
+        //try {
+        DataPackageWriter writer = new DataPackageWriter();
+        DataPackage pkg = new DataPackage();
+        pkg.id = "test";
+        System.out.println(writer.Write(pkg));            
+        //} catch ( IOException ioe ) {
+        //    System.out.println(ioe.toString());
+        //}        
+    }    
 }
