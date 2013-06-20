@@ -17,9 +17,22 @@ import com.google.gson.Gson;
  */
 public class DataPackageReader
 {
-    public static Gson gson = new Gson();
+    public Gson gson = new Gson();
 
-    public static String ReadFromUrl(URL source) throws IOException {
+
+    public DataPackage GetPackage(URL source) throws IOException {
+        DataPackage pkg = new DataPackage();
+        try {
+            String data = ReadFromUrl(source);
+            pkg = gson.fromJson(data, DataPackage.class);           
+        } catch (IOException ioe) {
+            // Do some logging here.
+            throw ioe;
+        }
+        return pkg;
+    }
+
+    private String ReadFromUrl(URL source) throws IOException {
         StringBuilder sb = new StringBuilder();
         InputStream is = source.openStream();
         try {
@@ -32,18 +45,5 @@ public class DataPackageReader
         } finally {
             is.close();
         }        
-    }
-
-    public static DataPackage GetPackage(URL source) {
-        DataPackage pkg = new DataPackage();
-        String data = null;
-        try {
-            data = ReadFromUrl(source);
-
-            pkg = gson.fromJson(data, DataPackage.class);           
-        } catch (IOException e) {
-            System.out.println(data);
-        }
-        return pkg;
-    }
+    }    
 }

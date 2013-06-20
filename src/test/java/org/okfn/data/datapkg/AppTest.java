@@ -3,6 +3,8 @@ package org.okfn.data.datapkg;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.io.IOException;
 import java.net.URL;
 import java.net.MalformedURLException;
 
@@ -35,11 +37,14 @@ public class AppTest
     public void testValid()
     {
         try {
-            DataPackage pkg = DataPackageReader.GetPackage(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
+            DataPackageReader reader = new DataPackageReader();
+            DataPackage pkg = reader.GetPackage(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
             System.out.println(pkg.toString());            
 
         } catch ( MalformedURLException e ) {
             System.out.println(e.toString());
-        }
+        } catch ( IOException ioe ) {
+            System.out.println(ioe.toString());
+        }        
     }
 }
