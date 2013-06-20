@@ -4,8 +4,11 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.net.MalformedURLException;
 
 import com.google.gson.Gson;
@@ -37,8 +40,15 @@ public class AppTest
     public void testValidRead()
     {
         try {
+
+            URL url = new URL("http://data.okfn.org/data/cpi/datapackage.json");
+            URLConnection connection = url.openConnection();
+            //connection.setConnectTimeout(connectTimeoutMS);
+            //connection.setReadTimeout(readTimeoutMS);
+            InputStreamReader in =  new InputStreamReader(connection.getInputStream());
+
             DataPackageReader reader = new DataPackageReader();
-            DataPackage pkg = reader.Read(new URL("http://data.okfn.org/data/cpi/datapackage.json"));
+            DataPackage pkg = reader.Read(in);
             System.out.println(pkg.toString());            
 
         } catch ( MalformedURLException e ) {
@@ -50,13 +60,13 @@ public class AppTest
 
     public void testValidWrite()
     {
-        //try {
-        DataPackageWriter writer = new DataPackageWriter();
-        DataPackage pkg = new DataPackage();
-        pkg.id = "test";
-        System.out.println(writer.Write(pkg));            
-        //} catch ( IOException ioe ) {
-        //    System.out.println(ioe.toString());
-        //}        
+        try {
+            DataPackageWriter writer = new DataPackageWriter();
+            DataPackage pkg = new DataPackage();
+            pkg.id = "test";
+            writer.Write(pkg, new OutputStreamWriter(System.out));            
+        } catch ( IOException ioe ) {
+            System.out.println(ioe.toString());
+        }        
     }    
 }

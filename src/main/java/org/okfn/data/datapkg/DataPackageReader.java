@@ -20,7 +20,7 @@ public class DataPackageReader
     public Gson gson = new Gson();
 
 
-    public DataPackage Read(URL source) throws IOException {
+    public DataPackage Read(InputStreamReader source) throws IOException {
         DataPackage pkg = new DataPackage();
         try {
             String data = ReadFromUrl(source);
@@ -32,18 +32,18 @@ public class DataPackageReader
         return pkg;
     }
 
-    private String ReadFromUrl(URL source) throws IOException {
+    private String ReadFromUrl(InputStreamReader input) throws IOException {
         StringBuilder sb = new StringBuilder();
-        InputStream is = source.openStream();
         try {
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            BufferedReader rd = new BufferedReader(input);
             int read = 0;
             while ((read = rd.read()) != -1) {
                 sb.append((char) read);
             }
             return sb.toString();
-        } finally {
-            is.close();
+        } catch (IOException ioe) {
+            // log
+            throw ioe;
         }        
     }    
 }

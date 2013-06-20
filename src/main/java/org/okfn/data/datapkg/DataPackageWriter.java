@@ -3,9 +3,8 @@ package org.okfn.data.datapkg;
 import java.nio.charset.Charset;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
 
 import java.net.URL;
 
@@ -21,14 +20,16 @@ public class DataPackageWriter
     /**
     *
     **/
-    public String Write(DataPackage pkg) { // throws IOException {
-        StringBuffer buffer = new StringBuffer();
-        //try {
-        buffer.append(gson.toJson(pkg));           
-        //} catch (IOException ioe) {
-            //throw ioe;
-        //}
-        return buffer.toString();
+    public void Write(DataPackage pkg, OutputStreamWriter out) throws IOException {
+        String json = gson.toJson(pkg);
+        try{ 
+            BufferedWriter writer = new BufferedWriter(out);
+            writer.write(json);
+            writer.flush();
+        } catch ( IOException ioe ) {
+            // Log error
+            throw ioe;
+        }
     }
 
 }
